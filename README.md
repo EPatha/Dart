@@ -1,114 +1,132 @@
-# PT 1 Dart Project
+# Sistem Perhitungan Nilai Mahasiswa - Dart
 
-Project Dart untuk tugas Praktikum Teknologi Berkelanjutan (PPB) Semester 7.
+Program Dart untuk menghitung nilai akhir mahasiswa berdasarkan nilai UTS, Tugas, dan UAS dengan sistem pembobotan dan konversi ke nilai huruf serta predikat.
 
-## Struktur Project
+## 📝 Deskripsi Program
 
-```
-PT_1/
-├── bin/
-│   └── main.dart           # Entry point aplikasi
-├── lib/
-│   ├── pt_1_dart_project.dart    # Library utama
-│   └── src/
-│       ├── calculator.dart       # Class Calculator
-│       ├── models/
-│       │   └── person.dart      # Model Person
-│       └── utils/
-│           └── string_utils.dart # Utility functions
-├── test/
-│   └── pt_1_dart_project_test.dart # Unit tests
-├── pubspec.yaml            # Dependencies dan metadata
-└── analysis_options.yaml  # Linting rules
-```
+Program ini adalah implementasi sistem perhitungan nilai akademik mahasiswa yang dibuat menggunakan bahasa pemrograman Dart. Program akan menghitung nilai akhir berdasarkan bobot tertentu dan mengkonversinya menjadi nilai huruf dan predikat.
 
-## Fitur yang Tersedia
+## 👨‍🎓 Data Mahasiswa
 
-### 1. Calculator Class
-- Operasi aritmatika dasar (tambah, kurang, kali, bagi)
-- Operasi pangkat (power)
-- Operasi akar kuadrat (square root)
-- Error handling untuk pembagian dengan nol
+- **NIM**: A11.2022.14632
+- **Nama**: Ephesians Prismaranatha
 
-### 2. Person Model
-- Model dengan properties: name, age, email, hobbies
-- JSON serialization support
-- Utility methods: isAdult, initials, copyWith
-- Proper equality dan hashCode
+## 📊 Sistem Penilaian
 
-### 3. String Utils
-- Kapitalisasi string
-- Palindrome checker
-- Word count
-- Email validation
-- Case conversion (camelCase, snake_case)
-- String manipulation utilities
+### Komponen Nilai dan Bobot:
+- **UTS (Ujian Tengah Semester)**: 35%
+- **Tugas**: 30%  
+- **UAS (Ujian Akhir Semester)**: 35%
 
-## Cara Menjalankan
+### Contoh Nilai Input:
+- Nilai UTS: 90
+- Nilai Tugas: 95
+- Nilai UAS: 95
 
-### 1. Install Dependencies
+## 🎯 Konversi Nilai Huruf
+
+| Rentang Nilai | Nilai Huruf | Predikat |
+|---------------|-------------|----------|
+| ≥ 85          | A           | Apik |
+| 80 - 84       | AB          | Apik Baik |
+| 70 - 79       | B           | Baik |
+| 65 - 69       | BC          | Baik Cukup |
+| 56 - 64       | C           | Cukup |
+| 40 - 55       | D           | Dableg |
+| < 40          | E           | Elek |
+
+## 🔧 Fungsi-Fungsi Program
+
+### 1. `main()`
+- Entry point program
+- Menginisialisasi data mahasiswa dan nilai
+- Memanggil fungsi perhitungan dan pencetakan
+
+### 2. `hitungnilai()`
+- Menghitung persentase nilai dari setiap komponen
+- Menghitung nilai akhir berdasarkan bobot
+
+### 3. `cetakNilai()`
+- Menampilkan semua informasi mahasiswa
+- Menampilkan hasil perhitungan nilai
+- Menampilkan nilai huruf dan predikat
+
+### 4. `getNilaiHuruf(double na)`
+- Mengkonversi nilai numerik ke nilai huruf
+- Parameter: nilai akhir (double)
+- Return: nilai huruf (String)
+
+### 5. `getPredikat(String nh)`
+- Mengkonversi nilai huruf ke predikat
+- Parameter: nilai huruf (String)
+- Return: predikat (String)
+
+## 💻 Cara Menjalankan Program
+
+### 1. Pastikan Dart SDK terinstall
 ```bash
-dart pub get
+dart --version
 ```
 
-### 2. Jalankan Aplikasi
+### 2. Jalankan program
 ```bash
 dart run bin/main.dart
 ```
 
-### 3. Jalankan Tests
-```bash
-dart test
+### 3. Output yang dihasilkan:
+```
+Nim          : A11.2022.14632
+Nama         : Ephesians Prismaranatha
+Nilai UTS    : 90.0, 35%  : 31.5
+Nilai Tugas  : 95.0, 30%  : 28.5
+Nilai UAS    : 95.0, 35%  : 33.25
+Nilai Akhir  : 93.25
+Nilai Huruf  : A
+Predikat     : Apik
 ```
 
-### 4. Generate Code (untuk JSON serialization)
-```bash
-dart run build_runner build
+## 📁 Struktur File
+
+```
+PT_1/
+├── bin/
+│   └── main.dart          # Program utama perhitungan nilai
+├── pubspec.yaml           # Konfigurasi project Dart
+└── README.md             # Dokumentasi ini
 ```
 
-## Dependencies
+## 🧮 Rumus Perhitungan
 
-- **http**: ^1.1.0 - Untuk HTTP requests
-- **json_annotation**: ^4.8.1 - Untuk JSON serialization
-- **lints**: ^3.0.0 - Dart linting rules
-- **test**: ^1.24.0 - Testing framework
-- **build_runner**: ^2.4.7 - Code generation
-- **json_serializable**: ^6.7.1 - JSON serialization generator
+**Nilai Akhir = (UTS × 0.35) + (Tugas × 0.30) + (UAS × 0.35)**
 
-## Development
+Dengan data contoh:
+- UTS: 90 × 0.35 = 31.5
+- Tugas: 95 × 0.30 = 28.5  
+- UAS: 95 × 0.35 = 33.25
+- **Nilai Akhir: 93.25**
 
-Untuk development, pastikan VS Code sudah terinstall dengan extensions:
-- Dart
-- Flutter (jika diperlukan)
+## 🎓 Implementasi
 
-Project ini sudah dikonfigurasi dengan:
-- ✅ Proper linting rules
-- ✅ Testing setup
-- ✅ JSON serialization
-- ✅ Modular architecture
-- ✅ Documentation
-- ✅ Error handling
+Program ini mengimplementasikan konsep-konsep dasar pemrograman Dart:
+- ✅ Variabel global
+- ✅ Tipe data String dan double
+- ✅ Function dengan parameter dan return value
+- ✅ Conditional statements (if-else)
+- ✅ Switch-case statement
+- ✅ String interpolation
+- ✅ Operasi aritmatika
 
-## Contoh Penggunaan
+## 📚 Mata Kuliah
 
-```dart
-import 'package:pt_1_dart_project/pt_1_dart_project.dart';
+**Praktikum Pemrograman Berkelanjutan (PPB)**  
+**Semester 7 - Universitas Dian Nuswantoro**
 
-void main() {
-  // Calculator
-  var calc = Calculator();
-  print(calc.add(2, 3)); // Output: 5
+## 👤 Pengembang
 
-  // Person
-  var person = Person(
-    name: 'John Doe',
-    age: 25,
-    email: 'john@example.com',
-  );
-  print(person.isAdult); // Output: true
+- **Nama**: Ephesians Prismaranatha
+- **NIM**: A11.2022.14632
+- **GitHub**: [@EPatha](https://github.com/EPatha)
 
-  // String Utils
-  print(StringUtils.capitalize('hello')); // Output: Hello
-  print(StringUtils.isPalindrome('racecar')); // Output: true
-}
-```
+---
+
+*Program ini dibuat sebagai tugas praktikum untuk mendemonstrasikan implementasi sistem perhitungan nilai akademik menggunakan bahasa pemrograman Dart.*
